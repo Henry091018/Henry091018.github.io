@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>临海美食图鉴 - 千年府城的舌尖盛宴</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // 自定义Tailwind配置
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D94A38', // 临海特色红
+                        secondary: '#F5C754', // 暖黄
+                        dark: '#2D3748',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['"Noto Serif SC"', 'serif']
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            }
+            .scroll-smooth {
+                scroll-behavior: smooth;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+                <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+            </a>
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+                <a href="#famous" class="font-medium hover:text-primary transition-colors">必吃美食</a>
+                <a href="#street" class="font-medium hover:text-primary transition-colors">经典推荐</a>
+                <a href="#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+                <a href="#culture" class="font-medium hover:text-primary transition-colors">项目概况</a>
+            </nav>
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+                <a href="#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+                <a href="#famous" class="font-medium py-2 hover:text-primary transition-colors">必吃美食</a>
+                <a href="#street" class="font-medium py-2 hover:text-primary transition-colors">经典推荐</a>
+                <a href="#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+                <a href="#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-b from-primary/5 to-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+            <div class="w-full md:w-1/2 space-y-6">
+                <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3.5rem)] leading-tight text-shadow">
+                    千年府城 <br><span class="text-primary">舌尖临海</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-lg">
+                    从紫阳古街的烟火气到牛头山的湖鲜盛宴，临海的美食藏着江南的温婉与山海的豪迈。
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#famous" class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg">
+                        探索美食 <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#restaurant" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow">
+                        餐馆导航 <i class="fa-solid fa-map-marker-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 relative">
+                <div class="rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="img/嵌糕.jpg" alt="临海美食合集" class="w-full h-auto object-cover">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-star text-secondary text-xl"></i>
+                        <div>
+                            <p class="font-bold text-lg">5.0</p>
+                            <p class="text-sm text-gray-500">吃货推荐指数</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -top-6 -right-6 bg-secondary/20 p-4 rounded-lg shadow-lg hidden md:block">
+                    <p class="font-medium text-dark">30+ 特色美食</p>
+                    <p class="text-sm text-gray-500">10+ 百年老店</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 府城介绍 -->
+    <section id="intro" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif font-bold text-[clamp(1.8rem,4vw,2.5rem)] mb-4">府城风味 · 山海之间的美食密码</h2>
+                <p class="text-gray-600 text-lg">临海，作为台州府治所在地，千年的历史沉淀出独特的饮食文化。靠山面海的地理优势，让这里的美食兼具山珍与海味，既有江南的精致，又有渔家的豪放。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-mountain-sun text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl mb-3">山海馈赠</h3>
+                    <p class="text-gray-600">东临东海，西靠括苍山，新鲜的海鲜、山野的笋菌、优质的稻米，为临海美食提供了得天独厚的食材基础。</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-scroll text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl mb-3">千年传承</h3>
+                    <p class="text-gray-600">从唐宋的府城宴席到明清的市井小吃，临海美食承载着历史的记忆，许多手艺已传承百年，保留着最本真的味道。</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-blender-phone text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl mb-3">创新融合</h3>
+                    <p class="text-gray-600">传统美食与现代烹饪手法碰撞，老味道焕发新生机，既有坚守传统的老店，也有推陈出新的网红餐馆。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- 必吃美食 -->
+ <section id="famous" class="py-16 md:py-24 bg-gray-50">
+     <div class="container mx-auto px-4">
+         <div class="text-center max-w-3xl mx-auto mb-16">
+             <h2 class="font-serif font-bold text-[clamp(1.8rem,4vw,2.5rem)] mb-4">必吃美食 · 舌尖上的临海名片</h2>
+             <p class="text-gray-600 text-lg">来到临海，这些美食是绝对不能错过的味觉体验，每一道都承载着府城的记忆与风情。</p>
+         </div>
+ 
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+             <!-- 蛋清羊尾（修复后） -->
+             <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                 <a href="蛋清羊尾.html" class="block">
+                     <div class="h-56 overflow-hidden">
+                         <img src="img/微信图片_20251123175245_6078_37.jpg" alt="蛋清羊尾" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                     </div>
+                     <div class="p-6">
+                         <div class="flex justify-between items-center mb-3">
+                             <h3 class="font-serif font-bold text-xl">蛋清羊尾</h3>
+                             <span class="bg-secondary/20 text-secondary text-sm font-medium px-3 py-1 rounded-full">非遗美食</span>
+                         </div>
+                         <p class="text-gray-600 mb-4">以蛋清为原料，打发后裹上豆沙，油炸至金黄酥脆，外酥里嫩，甜而不腻，是临海最具代表性的甜点。</p>
+                         <div class="flex items-center text-sm text-gray-500">
+                             <i class="fa-solid fa-clock mr-2"></i> 始创于清代
+                             <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i> 紫阳古街多见
+                         </div>
+                     </div>
+                 </a>
+             </div>
+ 
+             <!-- 临海麦虾（修复后） -->
+             <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                 <a href="临海麦虾.html" class="block">
+                     <div class="h-56 overflow-hidden">
+                         <img src="img/麦虾.jpg" alt="临海麦虾" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                     </div>
+                     <div class="p-6">
+                         <div class="flex justify-between items-center mb-3">
+                             <h3 class="font-serif font-bold text-xl">临海麦虾</h3>
+                             <span class="bg-primary/20 text-primary text-sm font-medium px-3 py-1 rounded-full">早餐必备</span>
+                         </div>
+                         <p class="text-gray-600 mb-4">面糊经挤压呈虾状，与海鲜、蔬菜、肉类同煮，汤鲜味美，口感爽滑，是临海人最爱的早餐之一。</p>
+                         <div class="flex items-center text-sm text-gray-500">
+                             <i class="fa-solid fa-clock mr-2"></i> 百年历史
+                             <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i> 全城遍布
+                         </div>
+                     </div>
+                 </a>
+             </div>
+ 
+             <!-- 紫阳古街海苔饼（修复后） -->
+             <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                 <a href="海苔饼.html" class="block">
+                     <div class="h-56 overflow-hidden">
+                         <img src="img/海苔饼1.jpg" alt="海苔饼" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                     </div>
+                     <div class="p-6">
+                         <div class="flex justify-between items-center mb-3">
+                             <h3 class="font-serif font-bold text-xl">海苔饼</h3>
+                             <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">古街特色</span>
+                         </div>
+                         <p class="text-gray-600 mb-4">以海苔为馅料，外皮酥脆，内馅咸香，咬一口满是海苔的鲜香，是紫阳古街最受欢迎的伴手礼。</p>
+                         <div class="flex items-center text-sm text-gray-500">
+                             <i class="fa-solid fa-clock mr-2"></i> 传承600年
+                             <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i> 紫阳古街
+                         </div>
+                     </div>
+                 </a>
+             </div>
+ 
+             <!-- 姜汤面（修复后） -->
+             <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                 <a href="姜汤面.html" class="block">
+                     <div class="h-56 overflow-hidden">
+                         <img src="img/姜汤面1.jpg" alt="姜汤面" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                     </div>
+                     <div class="p-6">
+                         <div class="flex justify-between items-center mb-3">
+                             <h3 class="font-serif font-bold text-xl">姜汤面</h3>
+                             <span class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1 rounded-full">驱寒暖胃</span>
+                         </div>
+                         <p class="text-gray-600 mb-4">以浓郁的姜汤为汤底，搭配海鲜、肉类、蔬菜和手工面条，味道辛辣鲜香，是冬季暖胃的绝佳选择。</p>
+                         <div class="flex items-center text-sm text-gray-500">
+                             <i class="fa-solid fa-clock mr-2"></i> 传统风味
+                             <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i> 老城区居多
+                         </div>
+                     </div>
+                 </a>
+             </div>
+ 
+             <!-- 扁食（修复后：补充闭合</a>） -->
+             <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                 <a href="扁食.html" class="block">
+                     <div class="h-56 overflow-hidden">
+                         <img src="img/扁食1.jpg" alt="扁食" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                     </div>
+                     <div class="p-6">
+                         <div class="flex justify-between items-center mb-3">
+                             <h3 class="font-serif font-bold text-xl">扁食</h3>
+                             <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">节日特色</span>
+                         </div>
+                         <p class="text-gray-600 mb-4">临海传统小吃，形似饺子但皮薄馅足，馅料丰富多样，可蒸可煮可煎，味道鲜香可口，是日常餐桌常见美食。</p>
+                         <div class="flex items-center text-sm text-gray-500">
+                             <i class="fa-solid fa-clock mr-2"></i> 民俗美食
+                             <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i> 家家户户都会做
+                         </div>
+                     </div>
+                 </a> <!-- 补充闭合<a> -->
+             </div>
+ 
+             <!-- 姜汁炖蛋（修复后：统一结构+修正内容） -->
+             <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                 <a href="姜汁炖蛋.html" class="block">
+                     <div class="h-56 overflow-hidden">
+                         <img src="img/P1040141.JPG" alt="姜汁炖蛋" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                     </div>
+                     <div class="p-6">
+                         <div class="flex justify-between items-center mb-3">
+                             <h3 class="font-serif font-bold text-xl">姜汁炖蛋</h3>
+                             <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">驱寒甜品</span>
+                         </div>
+                         <p class="text-gray-600 mb-4">以生姜汁和鸡蛋为原料，蒸制而成，口感滑嫩，带着姜汁的辛辣与香甜，是临海传统的暖胃甜品。</p>
+                         <div class="flex items-center text-sm text-gray-500">
+                             <i class="fa-solid fa-clock mr-2"></i> 传统甜品
+                             <i class="fa-solid fa-map-marker-alt ml-4 mr-2"></i> 全城餐馆有售
+                         </div>
+                     </div>
+                 </a>
+             </div>
+         </div>
+     </div>
+ </section>
+
+   <!-- 街头小吃（支持点击跳转版） -->
+   <section id="street" class="py-16 md:py-24 bg-white">
+       <div class="container mx-auto px-4">
+           <div class="text-center max-w-3xl mx-auto mb-16">
+               <h2 class="font-serif font-bold text-[clamp(1.8rem,4vw,2.5rem)] mb-4">经典推荐 · 藏在巷子里的烟火气</h2>
+               <p class="text-gray-600 text-lg">除了名菜，临海的街头巷尾还藏着许多平价美味，是当地人日常的味觉慰藉，也是游客不容错过的体验。</p>
+           </div>
+   
+           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+               <!-- 泡虾（跳转链接：wufanmazhi.html） -->
+               <a href="泡虾.html"" class="flex flex-col items-center p-4 bg-gray-50 rounded-xl card-hover block">
+                   <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-md">
+                       <img src="img/微信图片_20251203160135_352_32.jpg" alt="泡虾" class="w-full h-full object-cover">
+                   </div>
+                   <h3 class="font-serif font-bold text-lg mb-2">泡虾</h3>
+                   <p class="text-gray-600 text-center text-sm">节庆赶集、亲友小聚时不可或缺的特色小吃。</p>
+               </a>
+   
+               <!-- 梅花糕（跳转链接：meihuagao.html） -->
+               <a href="梅花糕.html"" class="flex flex-col items-center p-4 bg-gray-50 rounded-xl card-hover block">
+                   <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-md">
+                       <img src="img/mhg.jpg" alt="梅花糕" class="w-full h-full object-cover">
+                   </div>
+                   <h3 class="font-serif font-bold text-lg mb-2">梅花糕</h3>
+                   <p class="text-gray-600 text-center text-sm">形似梅花，外脆里嫩，有甜咸两种口味，街头巷尾常见的传统小吃。</p>
+               </a>
+   
+               <!-- 嵌糕（跳转链接：chaomazhi.html） -->
+               <a href="嵌糕.html"" class="flex flex-col items-center p-4 bg-gray-50 rounded-xl card-hover block">
+                   <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-md">
+                       <img src="img/嵌糕.jpg" alt="嵌糕" class="w-full h-full object-cover">
+                   </div>
+                   <h3 class="font-serif font-bold text-lg mb-2">嵌糕</h3>
+                   <p class="text-gray-600 text-center text-sm">临海早餐界当之无愧的“扛鼎之作”，一顿管饱半日的踏实选择。</p>
+               </a>
+   
+               <!-- 食饼筒（跳转链接：doufuyuan.html） -->
+               <a href="食饼筒.html"" class="flex flex-col items-center p-4 bg-gray-50 rounded-xl card-hover block">
+                   <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-white shadow-md">
+                       <img src="img/DJI_20251129085854_0867_D.JPG" alt="食饼筒" class="w-full h-full object-cover">
+                   </div>
+                   <h3 class="font-serif font-bold text-lg mb-2">食饼筒</h3>
+                   <p class="text-gray-600 text-center text-sm">刻在临海人血脉里的家乡味道，临海饮食文化中“包容百味、团圆和睦”的生动象征。</p>
+               </a>
+           </div>
+       </div>
+   </section>
+
+    <!-- 推荐餐馆 -->
+    <section id="restaurant" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif font-bold text-[clamp(1.8rem,4vw,2.5rem)] mb-4">推荐餐馆 · 寻味临海好去处</h2>
+                <p class="text-gray-600 text-lg">无论是百年老店还是网红餐馆，这些地方都能让你品尝到最地道的临海风味。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 周太麦饼 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row card-hover">
+                    <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+                        <img src="img/P1040140.JPG" alt="周太麦饼" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-3/5 p-6 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-serif font-bold text-xl">周太麦饼</h3>
+                                <div class="flex items-center mt-1">
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star-half-alt text-secondary text-sm"></i>
+                                    <span class="ml-2 text-sm text-gray-500">4.5分</span>
+                                </div>
+                            </div>
+                            <span class="bg-primary/10 text-primary text-xs font-medium px-2 py-1 rounded">老字号</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm md:text-base">
+                            临海40年老牌小吃店，以咸香饱满的冷饭麦饼为招牌，裹着油渣与葱花的焦脆饼皮藏着老底子烟火气！
+                        </p>
+                        <div class="mt-auto flex flex-col gap-2">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-map-marker-alt w-5 text-primary"></i>
+                                <span>浙江省台州市临海市古城街道腊梅路38、40号</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-phone w-5 text-primary"></i>
+                                <span>18858673537</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-clock w-5 text-primary"></i>
+                                <span>下午2点-3点门店休息一小时</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 三姊妹扁食姜汁 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row card-hover">
+                    <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+                        <img src="img/P1040161.JPG" alt="三姊妹扁食姜汁" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-3/5 p-6 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-serif font-bold text-xl">三姊妹扁食姜汁</h3>
+                                <div class="flex items-center mt-1">
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <span class="ml-2 text-sm text-gray-500">5.0分</span>
+                                </div>
+                            </div>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">烟火气</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm md:text-base">
+                            主打姜汁与扁食的经典搭档，甜润辛辣的姜汁暖胃，包裹多样熟馅的扁食尽显临海家常风味~
+                        </p>
+                        <div class="mt-auto flex flex-col gap-2">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-map-marker-alt w-5 text-primary"></i>
+                                <span>临海市花街路14号</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-phone w-5 text-primary"></i>
+                                <span>13626639001</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-clock w-5 text-primary"></i>
+                                <span>推荐：经典炒馅扁食、核桃姜汁调蛋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 白水洋食饼筒 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row card-hover">
+                    <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+                        <img src="img/DJI_20251129085854_0867_D.JPG" alt="白水洋食饼筒" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-3/5 p-6 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-serif font-bold text-xl">白水洋食饼筒</h3>
+                                <div class="flex items-center mt-1">
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-regular fa-star text-secondary text-sm"></i>
+                                    <span class="ml-2 text-sm text-gray-500">4.0分</span>
+                                </div>
+                            </div>
+                            <span class="bg-primary/10 text-primary text-xs font-medium px-2 py-1 rounded">老味道</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm md:text-base">
+                            将笋丝、蛋皮等十余种食材裹入薄韧饼皮，可煎可卷，一口集齐咸鲜香脆的台州特色主食。
+                        </p>
+                        <div class="mt-auto flex flex-col gap-2">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-map-marker-alt w-5 text-primary"></i>
+                                <span>临海市巾山路90号</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-phone w-5 text-primary"></i>
+                                <span>13958572701</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-clock w-5 text-primary"></i>
+                                <span>早餐首选</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 王阿姨梅花糕-->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row card-hover">
+                    <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+                        <img src="img/梅花糕.jpg" alt="王阿姨梅花糕" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-full md:w-3/5 p-6 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-serif font-bold text-xl">王阿姨梅花糕</h3>
+                                <div class="flex items-center mt-1">
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                                    <span class="ml-2 text-sm text-gray-500">5.0分</span>
+                                </div>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-1 rounded">甜糯香</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 text-sm md:text-base">
+                            临海街头的老字号甜点名吃，以软糯外皮裹着饱满甜馅，撒上桂花与坚果，甜而不腻、香气扑鼻，是承载一代人童年记忆的古早风味。
+                        </p>
+                        <div class="mt-auto flex flex-col gap-2">
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-map-marker-alt w-5 text-primary"></i>
+                                <span>临海市紫阳街35号</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-phone w-5 text-primary"></i>
+                                <span>13736632378</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <i class="fa-solid fa-clock w-5 text-primary"></i>
+                                <span>十元三个超高性价比</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目概况 -->
+    <section id="culture" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-serif font-bold text-[clamp(1.8rem,4vw,2.5rem)] mb-4">五味经纬 · 美食背后的文化传承</h2>
+                <p class="text-gray-600 text-lg">临海的美食不仅是味觉的享受，更承载着深厚的文化底蕴和民俗风情。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-calendar-days text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-xl mb-2">文化价值与保护需求</h3>
+                            <p class="text-gray-600">临海传统美食承载着千年的礼俗智慧，是城市历史记忆的鲜活载体，但随着时代发展，其文化内涵正面临消解风险，亟需深入挖掘和系统性保护，以激活其深层价值。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-leaf text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-xl mb-2">项目目标与创新路径</h3>
+                            <p class="text-gray-600">系统整理传统饮食礼俗，构建可传承的文化档案，并探索其在当代生活和文旅体验中的创新应用，使其焕发现代生命力。</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-people-group text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif font-bold text-xl mb-2">品牌升级与社会效益</h3>
+                            <p class="text-gray-600">通过文化赋能，推动临海美食从“地域风味”升级为兼具文化底蕴与商业活力的城市符号，助力文化传承、文旅融合及可持续发展。积极响应台州市"创建世界美食之都"的战略部署，着力提升"台州菜"品牌影响力，助力打造具有国际知名度的美食文化名片。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden shadow-xl">
+                        <img src="img/嵌糕2.jpg" alt="临海美食文化" class="w-full h-auto object-cover">
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 bg-primary text-white p-6 rounded-xl shadow-lg hidden md:block">
+                        <h4 class="font-serif font-bold text-xl mb-2">项目意义</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-secondary"></i>
+                                <span>系统梳理临海传统饮食中的饮食礼俗，精准记录和留存那些散落在生活实践中的文化细节，避免其随时代变迁逐渐流失，为地方文化遗产保护提供具体而鲜活的案例。</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-secondary"></i>
+                                <span>从饮食这一“小切口”切入探究其与礼俗、社会功能的关联，丰富民俗学、饮食文化学等领域的研究内容，为区域饮食文化研究提供新的视角和范式。</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check-circle text-secondary"></i>
+                                <span>探索传统饮食礼俗的现代转化路径，如结合现代生活方式创新饮食形式、融入文旅产业等，助力地方特色经济发展，让传统文化在当代焕发新活力。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                        <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa-brands fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa-brands fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa-brands fa-douyin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                        <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                        <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                        <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                        <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                            <span>临海市东方大道台州学院</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <span>18857637585</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i class="fa-solid fa-envelope text-primary"></i>
+                            <span>3236471173@qq.com</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                            订阅
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        // 导航栏滚动效果
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow');
+                header.classList.remove('py-3', 'shadow-sm');
+            } else {
+                header.classList.add('py-3', 'shadow-sm');
+                header.classList.remove('py-2', 'shadow');
+            }
+        });
+
+        // 回到顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // 关闭移动端菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                    }
+                    
+                    // 滚动到目标位置
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
