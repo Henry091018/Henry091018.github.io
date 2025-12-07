@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>姜汁炖蛋 - 暖身滋补的府城甜羹</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D94A38',
+            secondary: '#F5C754',
+            dark: '#2D3748',
+            light: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+  <!-- 导航栏 -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+        <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium text-primary border-b-2 border-primary pb-1">必吃美食</a>
+        <a href="index.html#street" class="font-medium hover:text-primary transition-colors">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium hover:text-primary transition-colors">项目概况</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-dark text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+        <a href="index.html#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium py-2 text-primary">必吃美食</a>
+        <a href="index.html#street" class="font-medium py-2 hover:text-primary transition-colors">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-b from-primary/5 to-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-10 items-center">
+        <div class="w-full md:w-1/2 relative">
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
+            <img src="img/P1040141.JPG" alt="姜汁炖蛋" class="w-full h-auto object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-secondary text-white p-4 rounded-lg shadow-lg hidden md:block">
+            <span class="font-bold text-lg">滋补甜羹</span>
+          </div>
+          <div class="absolute -top-6 -right-6 bg-primary/20 p-4 rounded-lg shadow-lg hidden md:block">
+            <p class="font-medium text-dark">温润养生</p>
+            <p class="text-sm text-gray-500">老少皆宜</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 space-y-6">
+          <div class="flex items-center gap-3">
+            <a href="index.html#famous" class="bg-white hover:bg-gray-50 text-dark font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>返回必吃美食</span>
+            </a>
+            <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">温润香甜</span>
+          </div>
+          <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3rem)] leading-tight text-shadow">
+            姜汁炖蛋 <br><span class="text-primary">暖身滋补的府城甜羹</span>
+          </h1>
+          <div class="flex items-center gap-6 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-primary text-xl"></i>
+              <span>百年传承</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt text-primary text-xl"></i>
+              <span>家常必备</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-star text-secondary text-xl"></i>
+              <span>吃货推荐：4.6分</span>
+            </div>
+          </div>
+          <p class="text-lg md:text-xl text-gray-600">
+            姜汁炖蛋是台州的传统甜品小吃，是台州姜文化的代表之一。2023年台州文旅纪录片《临海很好吃》收录该菜品制作过程，展现其作为地域饮食文化符号的特征。从前常百姓家里算是一道上等的滋补品。现在台州人把它当成一道早点或者宵夜，街头巷尾都能闻到姜香。试想，在这个一天冷似一天的秋日，来一碗姜汁调蛋，一口软糯丝滑的蛋羹入口，酒的微苦，姜的辛辣，汇集了红糖的甜与核桃的香，暖意从胃里升腾起来，祛了寒气，补了脾胃，畅快淋漓!三姊妹扁食姜汁就是制作姜汁炖蛋有名的店铺之一。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#shop" class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt"></i>
+              <span>推荐店铺</span>
+            </a>
+            <a href="#video" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-video"></i>
+              <span>制作视频</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心信息板块 -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2 space-y-8">
+          <!-- 原料与做法 -->
+          <div id="method" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-utensils text-primary"></i>
+              原料与做法
+            </h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl mb-3">核心原料</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-egg text-white text-xl w-8 text-center bg-secondary rounded-full"></i>
+                    <span>鸡蛋（4个）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-leaf text-green-600 text-xl w-8 text-center"></i>
+                    <span>生姜（100g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-sugar text-white text-xl w-8 text-center bg-red-600 rounded-full"></i>
+                    <span>红糖（80g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-water text-blue-500 text-xl w-8 text-center"></i>
+                    <span>温水（200ml）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-spa text-yellow-400 text-xl w-8 text-center"></i>
+                    <span>桂花蜜（少许，可选）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-seedling text-green-500 text-xl w-8 text-center"></i>
+                    <span>枸杞（少许，可选）</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-3">传统做法</h3>
+                <ol class="space-y-4">
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</span>
+                    <p>生姜洗净去皮，切成姜末，放入纱布中挤出姜汁（或用料理机打成姜泥后过滤取汁），约取50ml姜汁备用。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</span>
+                    <p>鸡蛋打入碗中，加入红糖，用筷子充分打散至红糖融化，再加入姜汁搅拌均匀。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</span>
+                    <p>分次加入温水，边加边搅拌（水与蛋液比例约1:1.5），搅拌至完全融合后，用筛网过滤一遍蛋液（去除气泡和未打散的蛋筋）。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</span>
+                    <p>将过滤后的蛋液倒入蒸碗中，碗口用保鲜膜覆盖（用牙签扎几个小孔透气）。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">5</span>
+                    <p>锅中加水烧开，将蒸碗放入蒸锅中，转小火蒸12-15分钟（避免大火蒸制导致蛋液起蜂窝）。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">6</span>
+                    <p>蒸好后取出，撕去保鲜膜，可根据喜好淋上少许桂花蜜或撒上枸杞点缀，趁热食用。</p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- 美食历史 -->
+          <div id="history" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-scroll text-primary"></i>
+              美食历史
+            </h2>
+            <div class="space-y-4 text-gray-600 text-lg">
+              <p>历史起源：起源于台州民间，早期主要用于产妇及体虚者的滋补调理，后逐渐演变为日常早点或宵夜。</p>
+              <p>文化习俗：立夏必吃甜品，寓意驱除湿气迎接夏季。在夏季吃正应对了“冬吃萝卜夏吃姜”的俗语。是月子餐核心滋补品，搭配黄酒增强温补效果。</p>
+              <p>食疗价值：驱寒：姜辣素促进血液循环，缓解畏寒症状。健脾：红糖与核桃组合改善消化吸收功能。补血：红糖提供铁元素及造血原料。</p>
+			  <p>文化意义：台州椒江、温岭等地将姜汁炖蛋视为产妇月子期补气养血食品，后演变为大众化早点与宵夜。2023年央视报道中，该菜品与北方豆汁类比，凸显其风味独特性与地域认同感。现已成为台州饮食文化的重要代表，并承载着家庭亲情与地域饮食习俗。</p>
+            </div>
+          </div>
+
+          <!-- 视频嵌入模块（本地视频版，布局完全不变） -->
+                    <div id="video" class="bg-gray-50 rounded-xl p-8">
+                      <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+                        <i class="fa-solid fa-video text-primary"></i>
+                        制作视频教程
+                      </h2>
+                      <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+                        <!-- 仅替换iframe为video标签，外层容器样式不变 -->
+                        <video 
+                    	id="foodVideo"
+                          src="video/三姊妹扁食.mov"  <!-- 本地视频路径，按你的文件命名修改 -->
+                          controls
+                          preload="metadata"
+                          class="w-full h-full"  <!-- 保留原有适配样式，确保布局一致 -->
+                        >
+                          您的浏览器不支持HTML5视频播放，请更新浏览器~
+                        </video>
+                      </div>
+                      <p class="text-center text-gray-500 mt-4 text-sm">
+                        视频来源 | 抖音@五味经纬
+                      </p >
+                    </div>
+
+
+
+              <!-- 探店小贴士 -->
+              <div class="bg-secondary/10 rounded-xl p-4">
+                <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-lightbulb text-secondary"></i>
+                  探店小贴士
+                </h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>姜汁浓度可提前告知店家调整，怕辣的朋友可选择“少姜”或“微甜”口味。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>最佳食用时间是刚蒸好出锅时，口感嫩滑，姜汁香气最浓郁。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>部分店铺支持外带，可选择保温盒包装，适合作为下午茶或夜宵。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <footer class="bg-dark text-white py-12">
+      <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div>
+                  <div class="flex items-center gap-2 mb-6">
+                      <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                      <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                  </div>
+                  <p class="text-gray-400 mb-6">
+                      探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                  </p>
+                  <div class="flex gap-4">
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-weixin"></i>
+                      </a>
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-weibo"></i>
+                      </a>
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-douyin"></i>
+                      </a>
+                  </div>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                  <ul class="space-y-3">
+                      <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                      <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                      <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                      <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                      <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                  <ul class="space-y-3">
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                          <span>临海市东方大道台州学院</span>
+                      </li>
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-phone text-primary"></i>
+                          <span>18857637585</span>
+                      </li>
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-envelope text-primary"></i>
+                          <span>3236471173@qq.com</span>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                  <p class="text-gray-400 mb-4">
+                      订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                  </p>
+                  <form class="flex">
+                      <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                      <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                          订阅
+                      </button>
+                  </form>
+              </div>
+          </div>
+          <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+          </div>
+      </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+  <!-- 找到页面最下面的 </body> 标签，在它前面粘贴这段 JS -->
+  <script>
+  // 页面被点击后，触发视频播放
+  document.addEventListener('click', function() {
+    const video = document.getElementById('foodVideo');
+    if (video.paused) {
+      video.play();
+    }
+  }, { once: true });
+  </script> <!-- 这是页面原有的闭合标签，JS 就贴在它上面 -->
+</body>
+</html>

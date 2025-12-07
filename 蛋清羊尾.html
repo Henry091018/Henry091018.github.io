@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蛋清羊尾 - 府城宴席的甜蜜非遗</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D94A38',
+            secondary: '#F5C754',
+            dark: '#2D3748',
+            light: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+  <!-- 导航栏 -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+        <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium text-primary border-b-2 border-primary pb-1">必吃美食</a>
+        <a href="index.html#street" class="font-medium hover:text-primary transition-colors">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium hover:text-primary transition-colors">项目概况</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-dark text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+        <a href="index.html#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium py-2 text-primary">必吃美食</a>
+        <a href="index.html#street" class="font-medium py-2 hover:text-primary transition-colors">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-b from-primary/5 to-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-10 items-center">
+        <div class="w-full md:w-1/2 relative">
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
+            <img src="img/微信图片_20251123175242_6077_37.jpg" alt="蛋清羊尾" class="w-full h-auto object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-secondary text-white p-4 rounded-lg shadow-lg hidden md:block">
+            <span class="font-bold text-lg">宴席甜点</span>
+          </div>
+          <div class="absolute -top-6 -right-6 bg-primary/20 p-4 rounded-lg shadow-lg hidden md:block">
+            <p class="font-medium text-dark">非遗美食</p>
+            <p class="text-sm text-gray-500">甜而不腻</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 space-y-6">
+          <div class="flex items-center gap-3">
+            <a href="index.html#famous" class="bg-white hover:bg-gray-50 text-dark font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>返回必吃美食</span>
+            </a>
+            <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">甜香软糯</span>
+          </div>
+          <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3rem)] leading-tight text-shadow">
+            蛋清羊尾 <br><span class="text-primary">府城宴席的甜蜜非遗</span>
+          </h1>
+          <div class="flex items-center gap-6 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-primary text-xl"></i>
+              <span>百年非遗</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt text-primary text-xl"></i>
+              <span>宴席必备</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-star text-secondary text-xl"></i>
+              <span>吃货推荐：4.7分</span>
+            </div>
+          </div>
+          <p class="text-lg md:text-xl text-gray-600">
+            “蛋清羊尾”又名“蛋白夹沙”，是登上《中国菜谱》浙江卷的地道临海菜，因其取材于“蛋清”，形状似“羊尾”而得名。它是浙江临海一道极具代表性的传统甜品，以“外酥里嫩、甜而不腻”的独特口感闻名，更是当地宴席、节庆中不可或缺的经典美食，承载着临海人对生活甜美的期许，也是胡家传承数十年的匠心味道。而临海本地最具代表性的蛋清羊尾店铺就位于紫阳街53号——胡记蛋清羊尾。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#shop" class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt"></i>
+              <span>推荐店铺</span>
+            </a>
+            <a href="#video" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-video"></i>
+              <span>制作视频</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心信息板块 -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2 space-y-8">
+          <!-- 原料与做法 -->
+          <div id="method" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-utensils text-primary"></i>
+              原料与做法
+            </h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl mb-3">核心原料</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-egg text-white text-xl w-8 text-center bg-secondary rounded-full"></i>
+                    <span>鸡蛋清（6个）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-bean text-red-800 text-xl w-8 text-center"></i>
+                    <span>红豆沙馅（200g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-sugar text-white text-xl w-8 text-center bg-yellow-400 rounded-full"></i>
+                    <span>白糖（50g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-flour text-yellow-600 text-xl w-8 text-center"></i>
+                    <span>玉米淀粉（30g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-oil-can text-yellow-500 text-xl w-8 text-center"></i>
+                    <span>食用油（适量）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-snowflake text-blue-300 text-xl w-8 text-center"></i>
+                    <span>熟糯米粉（少许，防粘）</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-3">传统做法</h3>
+                <ol class="space-y-4">
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</span>
+                    <p>将豇豆淘净，蒸至酥烂，去壳，碾成细末，掺入红糖、冬瓜糖、葡萄干细末，拌匀，制成豆酥馅，均分为如杨梅般的15颗小圆球待用。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</span>
+                    <p>将鸡蛋磕破，去壳，去蛋黄，取蛋清盛入大汤碗中，用蛋甩(或五支子)用力顺一个方向拌打，渐渐地蛋清呈泡沫状，碗中如白雪堆起，再取筷子一双，插入“白雪”中间，见正好稳稳立住不会倒即可。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</span>
+                    <p>把熟猪油倒入铁锅内，置小火上，待油温升到80℃~100℃。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</span>
+                    <p>取生粉倒入雪白的蛋清中，搅匀(千万不能让其漾水)，成蛋清糊。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">5</span>
+                    <p>再用筷子夹来一颗豆酥小圆球(羊尾馅)，挂上蛋清糊，均匀地粘在小球的周围，成为形如鸡蛋一般大小的白色球体，如此逐个放入油锅中左手拿小勺，从锅中舀来热油，不停地轻轻淋浇，翻身见球体愈来愈圆大，直至呈金黄色，右手拿漏勺速将其捞出，盛入盆中，撒上少许白糖，桂花即成。</p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- 美食历史 -->
+          <div id="history" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-scroll text-primary"></i>
+              美食历史
+            </h2>
+            <div class="space-y-4 text-gray-600 text-lg">
+             <p>起源传说：蛋清羊尾起源于明末清初时期的古台州府临海。关于其由来，流传较广的说法是，清乾隆年间，临海岭根村的长寿老人王世芳两度受邀参加“千叟宴”，他要求厨师制作一道“要尽揽华夏美食之精华，蕴含江山统一之意境。要有那南方的心，北方的味，中原的形”的菜肴。于是厨师用蛋清、豆沙等原料制作出了形似羊尾的甜品，蛋清羊尾因此得名。</p>
+             <p>名称由来：因其主要原料是鸡蛋清，且炸制后外形圆润，有一竖翘起，形似羊尾，故名为“蛋清羊尾”，其最初名为“蛋白夹沙”。</p>
+             <p>文化交流：蛋清羊尾是南北方饮食文化交流的产物。清初，南北方官员异地就任，带动了风俗和饮食的交流。这道甜品在北方以“雪衣豆沙”的形式登上宫廷御宴，在临海则成为了亲民的街头小吃，体现了不同地域对同一美食的传承与发展。</p>
+             <p>文化意义：在临海，蛋清羊尾是逢年过节餐桌上的特色美味甜点，深受当地人喜爱，承载着临海人民的家乡情怀。它也是临海的一张文化名片，吸引着众多游客前来品尝，为临海赢得了“中国美食地标之都”、“中华小吃之都”等美名。此外，蛋清羊尾还曾登上《中国菜谱》浙江卷，是国宴上的常客，彰显了其在饮食文化中的重要地位。</p>
+            </div>
+          </div>
+
+        
+<!-- 视频嵌入模块（本地视频版，布局完全不变） -->
+<div id="video" class="bg-gray-50 rounded-xl p-8">
+  <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+    <i class="fa-solid fa-video text-primary"></i>
+    制作视频教程
+  </h2>
+  <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+    <!-- 仅替换iframe为video标签，外层容器样式不变 -->
+    <video 
+	id="foodVideo"
+      src="video/蛋清羊尾.mp4"  <!-- 本地视频路径，按你的文件命名修改 -->
+      controls
+      preload="metadata"
+      class="w-full h-full"  <!-- 保留原有适配样式，确保布局一致 -->
+    >
+      您的浏览器不支持HTML5视频播放，请更新浏览器~
+    </video>
+  </div>
+  <p class="text-center text-gray-500 mt-4 text-sm">
+    视频来源 | 抖音@五味经纬
+  </p >
+</div>
+       
+
+              <!-- 探店小贴士 -->
+              <div class="bg-secondary/10 rounded-xl p-4">
+                <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-lightbulb text-secondary"></i>
+                  探店小贴士
+                </h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>蛋清羊尾现做现吃最佳，放凉后会变软，影响口感。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>部分店铺提供“迷你版”，适合多人分享，可一次品尝多种小吃。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>甜度可根据喜好提前告知店家调整，建议搭配清茶解腻。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <footer class="bg-dark text-white py-12">
+      <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div>
+                  <div class="flex items-center gap-2 mb-6">
+                      <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                      <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                  </div>
+                  <p class="text-gray-400 mb-6">
+                      探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                  </p>
+                  <div class="flex gap-4">
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-weixin"></i>
+                      </a>
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-weibo"></i>
+                      </a>
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-douyin"></i>
+                      </a>
+                  </div>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                  <ul class="space-y-3">
+                      <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                      <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                      <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                      <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                      <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                  <ul class="space-y-3">
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                          <span>临海市东方大道台州学院</span>
+                      </li>
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-phone text-primary"></i>
+                          <span>18857637585</span>
+                      </li>
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-envelope text-primary"></i>
+                          <span>3236471173@qq.com</span>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                  <p class="text-gray-400 mb-4">
+                      订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                  </p>
+                  <form class="flex">
+                      <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                      <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                          订阅
+                      </button>
+                  </form>
+              </div>
+          </div>
+          <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+          </div>
+      </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+  <!-- 找到页面最下面的 </body> 标签，在它前面粘贴这段 JS -->
+  <script>
+  // 页面被点击后，触发视频播放
+  document.addEventListener('click', function() {
+    const video = document.getElementById('foodVideo');
+    if (video.paused) {
+      video.play();
+    }
+  }, { once: true });
+  </script><!-- 这是页面原有的闭合标签，JS 就贴在它上面 -->
+</body>
+</html>

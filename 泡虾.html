@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泡虾 - 酥香扑鼻的街头炸物</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D94A38',
+            secondary: '#F5C754',
+            dark: '#2D3748',
+            light: '#F8FAFC',
+            accent: '#E67E22' // 泡虾专属橙棕色
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      }
+      .dot-pattern {
+        background-image: radial-gradient(#E67E2222 3px, transparent 3px);
+        background-size: 24px 24px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+  <!-- 导航栏（保持统一） -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+        <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium hover:text-primary transition-colors">必吃美食</a>
+        <a href="index.html#street" class="font-medium text-primary border-b-2 border-primary pb-1">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium hover:text-primary transition-colors">项目概况</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-dark text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+        <a href="index.html#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium py-2 hover:text-primary transition-colors">必吃美食</a>
+        <a href="index.html#street" class="font-medium py-2 text-primary">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区（差异化：左图右文+倾斜装饰） -->
+  <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-r from-accent/10 to-white relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-2/3 h-full dot-pattern opacity-40 pointer-events-none"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row gap-10 items-center">
+        <div class="w-full md:w-1/2 relative">
+          <div class="rounded-2xl overflow-hidden shadow-2xl transform -rotate-1 transition-transform hover:rotate-0 duration-500">
+            <img src="img/微信图片_20251203160135_352_32.jpg" alt="泡虾" class="w-full h-auto object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-secondary text-white p-4 rounded-lg shadow-lg hidden md:block transform rotate-2">
+            <span class="font-bold text-lg">酥香炸物</span>
+          </div>
+          <div class="absolute -top-6 -right-6 bg-accent/20 p-4 rounded-lg shadow-lg hidden md:block transform -rotate-2">
+            <p class="font-medium text-dark">外酥里嫩</p>
+            <p class="text-sm text-gray-500">现炸现吃</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 space-y-6">
+          <div class="flex items-center gap-3">
+            <a href="index.html#street" class="bg-white hover:bg-gray-50 text-dark font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>返回经典推荐</span>
+            </a>
+            <span class="bg-accent/10 text-accent text-sm font-medium px-3 py-1 rounded-full">金黄酥脆</span>
+          </div>
+          <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3rem)] leading-tight text-shadow">
+            泡虾 <br><span class="text-accent">酥香扑鼻的街头炸物</span>
+          </h1>
+          <div class="flex flex-wrap gap-4 text-gray-600">
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-fire text-accent text-xl"></i>
+              <span>热油现炸</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-drumstick-bite text-accent text-xl"></i>
+              <span>鲜肉馅料</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-star text-secondary text-xl"></i>
+              <span>吃货推荐：4.7分</span>
+            </div>
+          </div>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+            临海街头最具代表性的炸物小吃，面糊包裹着鲜肉、虾仁、葱花等馅料，放入热油中炸至金黄酥脆，咬下一口咔嚓作响，肉香与面香交织，配上甜辣酱，堪称街头美食的灵魂。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#shop" class="bg-accent hover:bg-accent/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt"></i>
+              <span>寻味店铺</span>
+            </a>
+            <a href="#video" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-video"></i>
+              <span>制作视频</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心信息板块（差异化：口味分类+制作技巧） -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- 左侧主内容（占8列） -->
+        <div class="lg:col-span-8 space-y-10">
+         
+          <!-- 原料与制作技巧 -->
+          <div id="method" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-8 flex items-center gap-3">
+              <i class="fa-solid fa-utensils text-accent"></i>
+              原料与制作技巧
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- 原料区 -->
+              <div class="space-y-4">
+                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                  <span class="w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-sm">材</span>
+                  核心原料
+                </h3>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-flour text-yellow-600 text-xl w-8 text-center"></i>
+                    <span>中筋面粉（200g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-drumstick-bite text-red-600 text-xl w-8 text-center"></i>
+                    <span>猪肉末（150g，肥瘦3:7）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-fish-fins text-cyan-500 text-xl w-8 text-center"></i>
+                    <span>虾仁（50g，可选）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-leaf text-green-600 text-xl w-8 text-center"></i>
+                    <span>葱花（30g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-water text-blue-400 text-xl w-8 text-center"></i>
+                    <span>清水（120ml）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-pepper-hot text-red-500 text-xl w-8 text-center"></i>
+                    <span>盐、生抽、胡椒粉（适量）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-oil-can text-yellow-500 text-xl w-8 text-center"></i>
+                    <span>食用油（适量，炸制用）</span>
+                  </div>
+                </div>
+              </div>
+              <!-- 制作技巧区 -->
+              <div class="space-y-4">
+                <h3 class="font-bold text-xl mb-4 flex items-center gap-2">
+                  <span class="w-6 h-6 bg-accent text-white rounded-full flex items-center justify-center text-sm">技</span>
+                  制作技巧
+                </h3>
+                <ol class="space-y-3">
+                  <li class="flex gap-3">
+                    <span class="bg-accent text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm">1</span>
+                    <p class="text-sm md:text-base">面粉加清水搅拌成无颗粒的稀面糊，静置10分钟醒发，面糊浓度以能挂勺为准。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-accent text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm">2</span>
+                    <p class="text-sm md:text-base">猪肉末加葱花、盐、生抽、胡椒粉腌制15分钟，虾仁洗净沥干（加虾仁需提前腌制）。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-accent text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm">3</span>
+                    <p class="text-sm md:text-base">锅中倒入足量食用油，烧至六成热（180℃左右，筷子放入冒泡），舀一勺面糊摊在手心。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-accent text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm">4</span>
+                    <p class="text-sm md:text-base">放入适量馅料，再舀一勺面糊覆盖，轻轻捏合成虾形，缓慢放入油锅中炸制。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-accent text-white w-6 h-6 rounded-full flex items-center justify-center font-bold flex-shrink-0 text-sm">5</span>
+                    <p class="text-sm md:text-base">炸至金黄酥脆（约3-4分钟），捞出沥干油分，趁热蘸甜辣酱或番茄酱食用。</p>
+                  </li>
+                </ol>
+                <div class="bg-accent/10 p-3 rounded-lg mt-4">
+                  <p class="text-sm text-gray-700 flex items-start gap-2">
+                    <i class="fa-solid fa-lightbulb text-accent mt-1"></i>
+                    <span>小贴士：油温是关键，过低会吸油变软，过高易外焦里生；炸好后放在吸油纸上吸去多余油脂，口感更清爽。</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 视频嵌入模块 -->
+          <div id="video" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-video text-accent"></i>
+              现炸制作视频
+            </h2>
+            <div class="aspect-video rounded-xl overflow-hidden shadow-lg border-4 border-white">
+              <video 
+                src="video/吕氏泡虾终版.mp4"
+                controls
+                poster="video/paoxia_cover.jpg"
+                preload="metadata"
+                class="w-full h-full object-contain"
+              >
+                您的浏览器不支持HTML5视频播放，请更新浏览器~
+              </video>
+            </div>
+            <p class="text-center text-gray-500 mt-4 text-sm">
+              本地实拍制作过程 | 现炸现吃口感最佳
+            </p>
+          </div>
+        </div>
+
+        <!-- 右侧边栏（占4列） -->
+        <div class="lg:col-span-4 space-y-8">
+          <!-- 历史渊源 -->
+          <div class="bg-gray-50 rounded-xl p-8 sticky top-32">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-scroll text-accent"></i>
+              历史渊源
+            </h2>
+            <div class="space-y-4 text-gray-600">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-calendar-alt text-accent text-xl mt-1"></i>
+                <p>起源传说：泡虾的起源可追溯至清末民初的临海街头，相传当时临海作为台州府治，商贸繁华，街头小贩为了方便百姓果腹，用家常面粉、猪肉、虾仁等食材，搭配简单调料，发明了这种裹料炸制的小吃。因炸制时面糊在油锅中翻滚，外形像“泡发的虾米”，又因馅料中常加虾仁，故得名“泡虾”；也有说法称，早年小贩挑担叫卖时，将面糊舀入热油中，气泡翻滚如虾跳，因此得名。</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-map-pin text-accent text-xl mt-1"></i>
+                <p>名称由来：泡虾之名源于其制作过程与外形：一是炸制时，面糊裹着馅料放入热油中，会迅速膨胀起泡，气泡翻滚跳动，形似活虾游动，故曰“泡虾”；二是传统泡虾馅料以虾仁为主，炸后外皮蓬松鼓起，外形酷似泡发的虾米，因此得名“泡虾”，也有部分地区称其为“炸泡”、“虾泡”，但临海本地人始终沿用“泡虾”这一称呼，沿用至今，成为独有的地域美食符号。</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-hands-helping text-accent text-xl mt-1"></i>
+                <p>饮食文化内涵：泡虾是临海街头美食文化的缩影，承载着临海人“就地取材、化繁为简”的饮食智慧。清末民初，临海百姓生活并不富裕，小贩用家常的面粉、猪肉，搭配本地易得的海虾，通过简单的炸制工艺，制作出香酥美味的泡虾，既解决了果腹需求，又满足了味蕾享受，是平民饮食文化的典型代表。</p>
+              </div>
+            </div>
+          </div>
+
+              <!-- 店铺2 -->
+              <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-serif font-bold text-xl">吕氏泡虾</h3>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">人气爆款</span>
+                  </div>
+                  <div class="flex items-center mt-1 mb-3">
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-regular fa-star text-secondary text-sm"></i>
+                    <span class="ml-2 text-sm text-gray-500">4.2分</span>
+                  </div>
+                  <p class="text-gray-600 mb-3 text-sm">
+                    紫阳街热门小摊，泡虾外皮特别酥脆，馅料可选虾仁、鱿鱼等，搭配自制甜辣酱，味道一绝。
+                  </p>
+                  <div class="flex flex-col gap-2 text-sm text-gray-500">
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-map-marker-alt w-5 text-accent"></i>
+                      <span>临海市紫阳古街与天宁路交叉口西20米</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-clock w-5 text-accent"></i>
+                      <span>8：30-22：00</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-money-bill-wave w-5 text-accent"></i>
+                      <span>价格：10-18元/个</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <footer class="bg-dark text-white py-12">
+      <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div>
+                  <div class="flex items-center gap-2 mb-6">
+                      <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                      <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                  </div>
+                  <p class="text-gray-400 mb-6">
+                      探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                  </p>
+                  <div class="flex gap-4">
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-weixin"></i>
+                      </a>
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-weibo"></i>
+                      </a>
+                      <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                          <i class="fa-brands fa-douyin"></i>
+                      </a>
+                  </div>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                  <ul class="space-y-3">
+                      <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                      <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                      <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                      <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                      <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                  <ul class="space-y-3">
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                          <span>临海市东方大道台州学院</span>
+                      </li>
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-phone text-primary"></i>
+                          <span>18857637585</span>
+                      </li>
+                      <li class="flex items-center gap-3 text-gray-400">
+                          <i class="fa-solid fa-envelope text-primary"></i>
+                          <span>3236471173@qq.com</span>
+                      </li>
+                  </ul>
+              </div>
+              <div>
+                  <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                  <p class="text-gray-400 mb-4">
+                      订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                  </p>
+                  <form class="flex">
+                      <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                      <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                          订阅
+                      </button>
+                  </form>
+              </div>
+          </div>
+          <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+          </div>
+      </div>
+  </footer>
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-accent/90">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
+

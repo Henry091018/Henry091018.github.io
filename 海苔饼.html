@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海苔饼 - 紫阳街的咸香酥脆招牌</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D94A38', // 统一使用前面美食页面的主色调（红色系）
+            secondary: '#F5C754', // 统一辅助色（黄色系）
+            dark: '#2D3748',
+            light: '#F8FAFC'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+  <!-- 导航栏（与姜汤面/扁食页面完全一致） -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+        <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium text-primary border-b-2 border-primary pb-1">必吃美食</a>
+        <a href="index.html#street" class="font-medium hover:text-primary transition-colors">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium hover:text-primary transition-colors">项目概况</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-dark text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+        <a href="index.html#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium py-2 text-primary">必吃美食</a>
+        <a href="index.html#street" class="font-medium py-2 hover:text-primary transition-colors">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区（统一布局结构、阴影效果、按钮样式） -->
+  <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-b from-primary/5 to-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-10 items-center">
+        <div class="w-full md:w-1/2 relative">
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
+            <img src="img/海苔饼1.jpg" alt="海苔饼" class="w-full h-auto object-cover">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-secondary text-white p-4 rounded-lg shadow-lg hidden md:block">
+            <span class="font-bold text-lg">咸香酥脆</span>
+          </div>
+          <div class="absolute -top-6 -right-6 bg-primary/20 p-4 rounded-lg shadow-lg hidden md:block">
+            <p class="font-medium text-dark">现烤现卖</p>
+            <p class="text-sm text-gray-500">紫阳街必买</p>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 space-y-6">
+          <div class="flex items-center gap-3">
+            <a href="index.html#famous" class="bg-white hover:bg-gray-50 text-dark font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>返回必吃美食</span>
+            </a>
+            <span class="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full">百年非遗</span>
+          </div>
+          <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3rem)] leading-tight text-shadow">
+            海苔饼 <br><span class="text-primary">紫阳街的咸香酥脆招牌</span>
+          </h1>
+          <div class="flex items-center gap-6 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-primary text-xl"></i>
+              <span>百年传承</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt text-primary text-xl"></i>
+              <span>紫阳街爆款</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-star text-secondary text-xl"></i>
+              <span>吃货推荐：4.8分</span>
+            </div>
+          </div>
+          <p class="text-lg md:text-xl text-gray-600">
+            都说临海糕点有“三宝”，除却羊脚蹄和马蹄酥，集甜咸香酥于一身的海苔饼就是临海糕点中的翘楚。飘香的油酥、咸香的海苔，仅是这般简单的组合，就把许多人的口水和迷恋给赚取了。它紫阳街的招牌美食，也是游客必带的特色手信。‌‌只要漫步临海紫阳古街，鼻尖总会闻到阵阵幽幽飘来的苔香味。这里的海苔饼店遍地开花，其中尤以王天顺海苔饼、九九海苔饼两家人气最旺。
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#shop" class="bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt"></i>
+              <span>推荐店铺</span>
+            </a>
+            <a href="#method" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-utensils"></i>
+              <span>制作工艺</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心信息板块（统一布局、卡片样式、标题样式） -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2 space-y-8">
+          <!-- 原料与做法 -->
+          <div id="method" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-utensils text-primary"></i>
+              原料与制作工艺
+            </h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-bold text-xl mb-3">核心原料</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-leaf text-green-600 text-xl w-8 text-center"></i>
+                    <span>本地优质海苔（50g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-bowl-food text-yellow-600 text-xl w-8 text-center"></i>
+                    <span>中筋面粉（500g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-butter text-yellow-400 text-xl w-8 text-center"></i>
+                    <span>猪油（100g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-sugar text-pink-500 text-xl w-8 text-center"></i>
+                    <span>白砂糖（80g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-salt text-gray-500 text-xl w-8 text-center"></i>
+                    <span>食盐（5g）</span>
+                  </div>
+                  <div class="flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm">
+                    <i class="fa-solid fa-water text-blue-500 text-xl w-8 text-center"></i>
+                    <span>温水（150ml）</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="font-bold text-xl mb-3">传统制作工艺</h3>
+                <ol class="space-y-4">
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</span>
+                    <p>海苔用清水泡软，洗净后沥干水分，切成碎末备用；面粉中加入白砂糖、食盐混合均匀。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</span>
+                    <p>加入猪油，用手搓揉至面粉呈颗粒状，再逐步加入温水，揉成光滑的面团，盖上保鲜膜醒发30分钟。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</span>
+                    <p>醒发好的面团分成若干小剂子，擀成圆形面皮，包入海苔碎末馅料，收口捏紧后轻轻按压成扁圆形。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</span>
+                    <p>将饼坯放入预热好的炭火烤箱中，上下火180℃烘烤15-20分钟，至表面金黄酥脆即可出炉。</p>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">5</span>
+                    <p>出炉后放凉片刻，即可食用，口感酥脆，海苔香气浓郁，咸甜适中。</p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- 美食历史 -->
+          <div id="history" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-scroll text-primary"></i>
+              美食历史
+            </h2>
+            <div class="space-y-4 text-gray-600 text-lg">
+              <p>历史起源：起源于清代三门湾渔民生活，林则徐曾赞誉当地海苔品质，民国时期演变为出海携带的干粮。</p>
+              <p>起源传说：海苔饼的传说众多，其中一个流传较广的故事是：一位聪明的渔民为了保存捕捞上来的海苔，尝试将其与其他食材混合制成一种便于携带和储存的食品。经过多次试验，他最终发明了海苔饼，不仅解决了海苔的保存问题，还创造了一种美味可口的新食物。</p>
+              <p>海洋的馈赠：一种美食的出现和延续，往往跟地理环境和地方农作物有着紧密的联系，对于这座滨海城市来说，享用海洋的馈赠并不罕见。“台州现存最早的一部总志——《嘉定赤城志》在南宋年间撰成，其中就有关于紫菜的记载，这是制作海苔的原材料。而在《台州府志》《临海县志》等地方文献中，也能发现当地对植物油的提取和食用有着丰富的经验和悠久的历史。”何薇薇说，最早的海苔饼，或许就是在这种环境下诞生的。</p>
+			  <p>文化传承：海苔饼的制作技艺在临海已传承百年以上，其历史可追溯至清光绪年间王天顺饼店的开业，是临海“山海文化”的典型代表。2017年，王天顺海苔饼被列入浙江省非物质文化遗产代表性项目，标志着其作为传统工艺的文化价值得到官方认可。</p>
+			  <p>文化意义：在台州，海苔饼不仅仅是一种美食，更是一种情感的寄托。那些吃着“海苔饼”长大和变老的台州人，对于海苔饼的记忆，仿佛融入了生活的每一个角落，成为了他们难以忘怀的味蕾记忆。这种习俗不仅增强了社区的凝聚力，也让海苔饼成为了一种具有深厚文化底蕴的美食。</p>
+            </div>
+          </div>
+
+          <!-- 视频嵌入模块（本地视频版，布局完全不变） -->
+          <div id="video" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-video text-primary"></i>
+              制作视频教程
+            </h2>
+            <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <!-- 仅替换iframe为video标签，外层容器样式不变 -->
+              <video 
+          	id="foodVideo"
+                src="video/海苔饼.mp4"  <!-- 本地视频路径，按你的文件命名修改 -->
+                controls
+                preload="metadata"
+                class="w-full h-full"  <!-- 保留原有适配样式，确保布局一致 -->
+              >
+                您的浏览器不支持HTML5视频播放，请更新浏览器~
+              </video>
+            </div>
+            <p class="text-center text-gray-500 mt-4 text-sm">
+              视频来源 | 抖音@五味经纬
+            </p >
+          </div>
+
+
+
+              <!-- 探店小贴士（与姜汤面页面统一样式） -->
+              <div class="bg-secondary/10 rounded-xl p-4">
+                <h4 class="font-bold text-lg mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-lightbulb text-secondary"></i>
+                  探店小贴士
+                </h4>
+                <ul class="space-y-2 text-sm text-gray-600">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>热门店铺节假日排队超1小时，建议错峰前往（如早上8点前或晚上8点后）。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>现烤海苔饼可直接食用，若需保存，建议选择真空包装，常温可放7天。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-primary mt-1"></i>
+                    <span>部分店铺支持微信预约自提，可提前联系商家减少排队时间。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+ <!-- 底部 -->
+ <footer class="bg-dark text-white py-12">
+     <div class="container mx-auto px-4">
+         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+             <div>
+                 <div class="flex items-center gap-2 mb-6">
+                     <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                     <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                 </div>
+                 <p class="text-gray-400 mb-6">
+                     探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                 </p>
+                 <div class="flex gap-4">
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-weixin"></i>
+                     </a>
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-weibo"></i>
+                     </a>
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-douyin"></i>
+                     </a>
+                 </div>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                 <ul class="space-y-3">
+                     <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                     <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                     <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                     <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                     <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                 </ul>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                 <ul class="space-y-3">
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                         <span>临海市东方大道台州学院</span>
+                     </li>
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-phone text-primary"></i>
+                         <span>18857637585</span>
+                     </li>
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-envelope text-primary"></i>
+                         <span>3236471173@qq.com</span>
+                     </li>
+                 </ul>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                 <p class="text-gray-400 mb-4">
+                     订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                 </p>
+                 <form class="flex">
+                     <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                     <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                         订阅
+                     </button>
+                 </form>
+             </div>
+         </div>
+         <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+         </div>
+     </div>
+ </footer>
+
+  <!-- 回到顶部按钮（与前面页面统一） -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript（与前面页面完全一致） -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+  <!-- 找到页面最下面的 </body> 标签，在它前面粘贴这段 JS -->
+  <script>
+  // 页面被点击后，触发视频播放
+  document.addEventListener('click', function() {
+    const video = document.getElementById('foodVideo');
+    if (video.paused) {
+      video.play();
+    }
+  }, { once: true });
+  </script> <!-- 这是页面原有的闭合标签，JS 就贴在它上面 -->
+</body>
+</html>
