@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>食饼筒 - 包罗万象的府城卷饼</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D94A38',
+            secondary: '#F5C754',
+            dark: '#2D3748',
+            light: '#F8FAFC',
+            accent: '#3498DB' // 食饼筒专属天蓝色
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      }
+      .line-pattern {
+        background-image: linear-gradient(90deg, #3498DB11 50%, transparent 50%),
+                          linear-gradient(#3498DB11 50%, transparent 50%);
+        background-size: 20px 20px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+  <!-- 导航栏（保持统一） -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+        <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium hover:text-primary transition-colors">必吃美食</a>
+        <a href="index.html#street" class="font-medium text-primary border-b-2 border-primary pb-1">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium hover:text-primary transition-colors">项目概况/a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-dark text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+        <a href="index.html#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium py-2 hover:text-primary transition-colors">必吃美食</a>
+        <a href="index.html#street" class="font-medium py-2 text-primary">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区（差异化：三栏图文+节日标签） -->
+  <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-b from-accent/10 to-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full line-pattern opacity-30 pointer-events-none"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col items-center text-center gap-10">
+        <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-4">
+        </div>
+        <div class="w-full max-w-2xl space-y-6">
+          <div class="flex justify-center items-center gap-3">
+            <a href="index.html#street" class="bg-white hover:bg-gray-50 text-dark font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>返回经典推荐</span>
+            </a>
+            <span class="bg-accent/10 text-accent text-sm font-medium px-3 py-1 rounded-full">包罗万象</span>
+            <span class="bg-red-100 text-red-800 text-sm font-medium px-3 py-1 rounded-full">节日必备</span>
+          </div>
+          <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3rem)] leading-tight text-shadow">
+            食饼筒 <br><span class="text-accent">包罗万象的府城卷饼</span>
+          </h1>
+          <div class="flex flex-wrap justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-wheat-awn text-accent text-xl"></i>
+              <span>薄饼皮</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-carrot text-accent text-xl"></i>
+              <span>十几种配料</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-star text-secondary text-xl"></i>
+              <span>吃货推荐：4.9分</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-calendar-day text-accent text-xl"></i>
+              <span>节日美食</span>
+            </div>
+          </div>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+            白水洋食饼筒被誉为“临海人的团圆饼”，因起源并盛行于临海白水洋镇而得名。它并非简单的面饼卷菜，而是将十余种荤素食材精心搭配，卷入薄如蝉翼的麦饼皮中，一口便能尝尽鲜、香、嫩、爽多重口感。从日常三餐的便捷主食，到春节、端午、中秋等传统佳节的团圆宴席必备美食，白水洋食饼筒早已融入临海人的生活肌理，是刻在临海人血脉里的家乡味道，更是临海饮食文化中“包容百味、团圆和睦”的生动象征。
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#shop" class="bg-accent hover:bg-accent/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt"></i>
+              <span>寻味店铺</span>
+            </a>
+            <a href="#video" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-video"></i>
+              <span>制作视频</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心信息板块（差异化：配料矩阵+节日文化） -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- 左侧主内容（占8列） -->
+        <div class="lg:col-span-8 space-y-10">
+          <!-- 配料矩阵（差异化模块） -->
+          <div id="ingredients" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-8 flex items-center gap-3">
+              <i class="fa-solid fa-clipboard-list text-accent"></i>
+              经典配料矩阵
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-bowl-rice text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">炒粉干</h3>
+                <p class="text-gray-500 text-xs">基础必备</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-carrot text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">土豆丝</h3>
+                <p class="text-gray-500 text-xs">清爽解腻</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-drumstick-bite text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">卤肉</h3>
+                <p class="text-gray-500 text-xs">增香提味</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-fish-fins text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">炒鱿鱼</h3>
+                <p class="text-gray-500 text-xs">海鲜风味</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-egg text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">蛋皮</h3>
+                <p class="text-gray-500 text-xs">增加口感</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-leaf text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">绿豆芽</h3>
+                <p class="text-gray-500 text-xs">脆嫩爽口</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-bean text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">炒豆子</h3>
+                <p class="text-gray-500 text-xs">香酥可口</p>
+              </div>
+              <div class="bg-white p-4 rounded-lg shadow-sm flex flex-col items-center text-center card-hover">
+                <i class="fa-solid fa-pepper-hot text-accent text-2xl mb-3"></i>
+                <h3 class="font-bold text-base mb-1">海带丝</h3>
+                <p class="text-gray-500 text-xs">咸香开胃</p>
+              </div>
+            </div>
+            <div class="bg-accent/10 p-4 rounded-lg mt-6">
+              <p class="text-gray-700 flex items-start gap-2">
+                <i class="fa-solid fa-lightbulb text-accent mt-1"></i>
+                <span>小贴士：配料可根据个人口味增减，传统食饼筒会搭配10-15种配料，寓意“十全十美”，逢年过节食用更具仪式感～</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- 制作步骤（差异化：流程式图解） -->
+          <div id="method" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-8 flex items-center gap-3">
+              <i class="fa-solid fa-utensils text-accent"></i>
+              制作步骤
+            </h2>
+            <div class="relative">
+              <!-- 连接线 -->
+              <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-accent/30 hidden md:block"></div>
+              <div class="space-y-8">
+                <!-- 步骤1 -->
+                <div class="flex flex-col md:flex-row gap-4 items-start">
+                  <div class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold z-10 flex-shrink-0">1</div>
+                  <div class="bg-white p-5 rounded-lg shadow-sm flex-1">
+                    <h3 class="font-bold text-lg mb-2">制作饼皮</h3>
+                    <p class="text-gray-600">中筋面粉加温水揉成光滑面团，醒发20分钟后分成小剂子，用擀面杖擀成薄如蝉翼的圆形饼皮，放入平底锅小火烙至两面微黄（无需放油），取出备用。</p>
+                  </div>
+                </div>
+                <!-- 步骤2 -->
+                <div class="flex flex-col md:flex-row gap-4 items-start">
+                  <div class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold z-10 flex-shrink-0">2</div>
+                  <div class="bg-white p-5 rounded-lg shadow-sm flex-1">
+                    <h3 class="font-bold text-lg mb-2">准备配料</h3>
+                    <p class="text-gray-600">炒粉干、土豆丝、卤肉、炒鱿鱼等配料分别烹饪至熟，蛋皮煎好后切丝，所有配料装盘备用（配料需保持干燥，避免饼皮破损）。</p>
+                  </div>
+                </div>
+                <!-- 步骤3 -->
+                <div class="flex flex-col md:flex-row gap-4 items-start">
+                  <div class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold z-10 flex-shrink-0">3</div>
+                  <div class="bg-white p-5 rounded-lg shadow-sm flex-1">
+                    <h3 class="font-bold text-lg mb-2">摆放配料</h3>
+                    <p class="text-gray-600">将饼皮平铺在案板上，先铺一层炒粉干（作为基底），再依次放上土豆丝、卤肉、蛋皮、绿豆芽等配料，注意配料集中在饼皮中间，边缘留空。</p>
+                  </div>
+                </div>
+                <!-- 步骤4 -->
+                <div class="flex flex-col md:flex-row gap-4 items-start">
+                  <div class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center font-bold z-10 flex-shrink-0">4</div>
+                  <div class="bg-white p-5 rounded-lg shadow-sm flex-1">
+                    <h3 class="font-bold text-lg mb-2">卷制成型</h3>
+                    <p class="text-gray-600">先将饼皮左右两侧向中间对折，再将底部向上卷起，最后将顶部向下压紧，形成筒状，可蘸取甜辣酱或酱油食用，口感更佳。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 视频嵌入模块 -->
+          <div id="video" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-video text-accent"></i>
+              传统制作视频
+            </h2>
+            <div class="aspect-video rounded-xl overflow-hidden shadow-lg border-4 border-white">
+              <video 
+                src="video/食饼筒.mp4"
+                controls
+                poster="video/shibingtong_cover.jpg"
+                preload="metadata"
+                class="w-full h-full object-contain"
+              >
+                您的浏览器不支持HTML5视频播放，请更新浏览器~
+              </video>
+            </div>
+            <p class="text-center text-gray-500 mt-4 text-sm">
+              本地实拍传统制作过程 | 逢年过节家庭必备美食
+            </p>
+          </div>
+        </div>
+
+        <!-- 右侧边栏（占4列） -->
+        <div class="lg:col-span-4 space-y-8">
+          <!-- 历史渊源与节日文化 -->
+          <div class="bg-gray-50 rounded-xl p-8 sticky top-32">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-scroll text-accent"></i>
+              历史与节日文化
+            </h2>
+            <div class="space-y-4 text-gray-600">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-history text-accent text-xl mt-1"></i>
+                <p>起源传说：有说法称，南宋末年，临海百姓为躲避战乱，将家中仅剩的各类食材混合炒制，用麦饼皮卷起来随身携带，久而久之，便形成了食饼筒这道美食；还有一种民间传说，白水洋食饼筒起源于“立夏”节气，当地百姓认为立夏吃食饼筒，能“卷走百病”，保佑家人身体健康。</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-calendar-check text-accent text-xl mt-1"></i>
+                <p>名称由来：“食饼筒”，因它以薄麦饼皮为载体，将各类食材卷成“筒状”食用，外形似筒，口感鲜香，故得名“食饼筒”。在临海本地，也有人称其为“麦饼筒”、“麦油脂”，但“食饼筒”这一称呼最为流传，既凸显了产地特色，也彰显了其独特的地域美食身份，沿用至今，成为临海美食的重要符号。</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-users text-accent text-xl mt-1"></i>
+                <p>饮食文化内涵：临海地处江南水乡，物产丰富，百姓充分利用本地的小麦、猪肉、海鲜、蔬菜等食材，通过“烙皮、炒菜、卷制”这一简单工艺，将多种食材融合在一起，既解决了日常果腹需求，又满足了味蕾享受。同时，白水洋食饼筒也是南北方饮食文化融合的产物，北方的面饼工艺与南方的鲜美食材相结合，形成了这道兼具北方面食的筋道与南方食材的鲜美的特色美食，彰显了临海饮食文化的包容性。此外，食饼筒的“卷制”形态，也蕴含着“团圆和睦”的寓意，多种食材卷在一起，象征着家人团聚、和和美美，这与临海人重视家庭团圆的传统观念不谋而合。</p>
+              </div>
+              <div class="bg-accent/10 p-4 rounded-lg mt-4">
+                <p class="text-gray-700 flex items-start gap-2">
+                  <i class="fa-solid fa-info-circle text-accent mt-1"></i>
+                  <span>文化小知识：临海食饼筒与其他地区的卷饼不同，配料更丰富，饼皮更薄，且必须现卷现吃，才能保证口感酥脆、配料鲜香。</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 推荐店铺 -->
+          <div id="shop" class="bg-gray-50 rounded-xl p-8 sticky top-[550px]">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-map-marker-alt text-accent"></i>
+              寻味店铺
+            </h2>
+            <div class="space-y-6">
+             
+              <!-- 店铺2 -->
+              <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-serif font-bold text-xl">白水洋食饼筒</h3>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">人气爆款</span>
+                  </div>
+                  <div class="flex items-center mt-1 mb-3">
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-regular fa-star text-secondary text-sm"></i>
+                    <span class="ml-2 text-sm text-gray-500">4.3分</span>
+                  </div>
+                  <p class="text-gray-600 mb-3 text-sm">
+                    热门店铺，配料新鲜足量，支持自定义搭配，饼皮可选择粗粮或传统口味，性价比高，适合日常食用。
+                  </p>
+                  <div class="flex flex-col gap-2 text-sm text-gray-500">
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-map-marker-alt w-5 text-accent"></i>
+                      <span>临海市巾山路90号</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-clock w-5 text-accent"></i>
+                      <span>早餐首选</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-money-bill-wave w-5 text-accent"></i>
+                      <span>价格：7-20元/份</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+
+ <!-- 底部 -->
+ <footer class="bg-dark text-white py-12">
+     <div class="container mx-auto px-4">
+         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+             <div>
+                 <div class="flex items-center gap-2 mb-6">
+                     <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                     <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                 </div>
+                 <p class="text-gray-400 mb-6">
+                     探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                 </p>
+                 <div class="flex gap-4">
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-weixin"></i>
+                     </a>
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-weibo"></i>
+                     </a>
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-douyin"></i>
+                     </a>
+                 </div>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                 <ul class="space-y-3">
+                     <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                     <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                     <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                     <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                     <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                 </ul>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                 <ul class="space-y-3">
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                         <span>临海市东方大道台州学院</span>
+                     </li>
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-phone text-primary"></i>
+                         <span>18857637585</span>
+                     </li>
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-envelope text-primary"></i>
+                         <span>3236471173@qq.com</span>
+                     </li>
+                 </ul>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                 <p class="text-gray-400 mb-4">
+                     订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                 </p>
+                 <form class="flex">
+                     <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                     <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                         订阅
+                     </button>
+                 </form>
+             </div>
+         </div>
+         <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+         </div>
+     </div>
+ </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-accent/90">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>嵌糕 - 软糯鲜香的临海早餐王</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#D94A38',
+            secondary: '#F5C754',
+            dark: '#2D3748',
+            light: '#F8FAFC',
+            accent: '#2ECC71' // 嵌糕专属青绿色（贴合糯米色）
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif SC"', 'serif']
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      }
+      .dot-pattern {
+        background-image: radial-gradient(#2ECC7111 4px, transparent 4px);
+        background-size: 20px 20px;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark scroll-smooth">
+  <!-- 导航栏（保持统一） -->
+  <header class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="img/图标.png" alt="图标" style="width: 4rem; height: 4rem; vertical-align: middle;">
+        <span class="font-serif font-bold text-xl md:text-2xl">五味经纬·临海美食图鉴</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="font-medium hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium hover:text-primary transition-colors">必吃美食</a>
+        <a href="index.html#street" class="font-medium text-primary border-b-2 border-primary pb-1">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium hover:text-primary transition-colors">项目概况</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-dark text-xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+      <div class="container mx-auto px-4 py-3 flex flex-col gap-4">
+        <a href="index.html#intro" class="font-medium py-2 hover:text-primary transition-colors">府城风味</a>
+        <a href="index.html#famous" class="font-medium py-2 hover:text-primary transition-colors">必吃美食</a>
+        <a href="index.html#street" class="font-medium py-2 text-primary">经典推荐</a>
+        <a href="index.html#restaurant" class="font-medium py-2 hover:text-primary transition-colors">推荐餐馆</a>
+        <a href="index.html#culture" class="font-medium py-2 hover:text-primary transition-colors">项目概况</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区（差异化：大图+局部特写） -->
+  <section class="pt-28 md:pt-36 pb-16 md:pb-24 bg-gradient-to-b from-accent/10 to-white relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full dot-pattern opacity-30 pointer-events-none"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row gap-10 items-center">
+        <div class="w-full md:w-1/2">
+          <div class="rounded-2xl overflow-hidden shadow-xl">
+            <img src="img/嵌糕.jpg" alt="嵌糕成品" class="w-full h-auto object-cover">
+          </div>
+          <div class="grid grid-cols-2 gap-4 mt-4">
+            <div class="rounded-xl overflow-hidden shadow-md transform hover:scale-105 transition-transform duration-300">
+              <img src="img/嵌糕馅料.jpg" alt="嵌糕馅料" class="w-full h-auto object-cover">
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-md transform hover:scale-105 transition-transform duration-300">
+              <img src="img/嵌糕2.jpg" alt="制作嵌糕" class="w-full h-auto object-cover">
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 space-y-6">
+          <div class="flex items-center gap-3">
+            <a href="index.html#street" class="bg-white hover:bg-gray-50 text-dark font-medium px-4 py-2 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>返回经典推荐</span>
+            </a>
+            <span class="bg-accent/10 text-accent text-sm font-medium px-3 py-1 rounded-full">早餐必备</span>
+            <span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">软糯鲜香</span>
+          </div>
+          <h1 class="font-serif font-bold text-[clamp(2rem,5vw,3rem)] leading-tight text-shadow">
+            嵌糕 <br><span class="text-accent">软糯鲜香的临海早餐王</span>
+          </h1>
+          <div class="flex flex-wrap gap-4 text-gray-600">
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-wheat-awn text-accent text-xl"></i>
+              <span>糯米外皮</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-drumstick-bite text-accent text-xl"></i>
+              <span>荤素馅料</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-star text-secondary text-xl"></i>
+              <span>吃货推荐：4.8分</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full shadow-sm">
+              <i class="fa-solid fa-clock text-accent text-xl"></i>
+              <span>现做现吃</span>
+            </div>
+          </div>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+            临海人早餐的灵魂选择，将蒸熟的糯米揉成薄皮，包裹卤肉、炒土豆丝、豆腐干、胡萝卜丝等十余种馅料，捏合成团即可食用，软糯的外皮搭配鲜香的馅料，一口下去超满足！
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#shop" class="bg-accent hover:bg-accent/90 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+              <i class="fa-solid fa-map-marker-alt"></i>
+              <span>寻味店铺</span>
+            </a>
+            <a href="#video" class="bg-white hover:bg-gray-50 text-dark font-medium px-6 py-3 rounded-lg border border-gray-200 transition-all shadow-sm hover:shadow flex items-center gap-2">
+              <i class="fa-solid fa-video"></i>
+              <span>制作视频</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心信息板块（差异化：馅料搭配+制作技巧） -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- 左侧主内容（占8列） -->
+        <div class="lg:col-span-8 space-y-10">
+          <!-- 经典馅料搭配 -->
+          <div id="fillings" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-8 flex items-center gap-3">
+              <i class="fa-solid fa-clipboard-check text-accent"></i>
+              经典馅料搭配
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                  <i class="fa-solid fa-meat text-accent"></i>
+                  荤菜馅料
+                </h3>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">卤猪肉（肥瘦相间）</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">卤牛肉</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">炒鸡蛋</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">火腿肠</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">腊肉</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">鱼豆腐</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                  <i class="fa-solid fa-carrot text-accent"></i>
+                  素菜馅料
+                </h3>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">炒土豆丝</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">豆腐干丝</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">胡萝卜丝</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">海带丝</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">绿豆芽</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-accent"></i>
+                    <span class="text-gray-600">酸萝卜</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-accent/10 p-4 rounded-lg mt-6">
+              <p class="text-gray-700 flex items-start gap-2">
+                <i class="fa-solid fa-lightbulb text-accent mt-1"></i>
+                <span>搭配小贴士：经典搭配是“卤猪肉+炒土豆丝+豆腐干丝”，喜欢重口的可以加一勺卤汁，喜欢清爽的可以多放绿豆芽和酸萝卜，解腻又开胃～</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- 制作技巧 -->
+          <div id="method" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-8 flex items-center gap-3">
+              <i class="fa-solid fa-utensils text-accent"></i>
+              制作技巧
+            </h2>
+            <div class="space-y-6">
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold text-xl mb-3">1. 糯米处理（关键步骤）</h3>
+                <p class="text-gray-600 mb-4">
+                  选择圆糯米，提前浸泡4-6小时（或隔夜），泡好后沥干水分，放入蒸笼大火蒸20-25分钟，直到糯米软糯有弹性（用手指按压能轻微变形但不粘手）。
+                </p>
+                <p class="text-gray-600">
+                  蒸好的糯米取出后，趁热加入少量温水和盐，用干净的手揉匀（戴一次性手套防粘），揉至糯米团光滑有韧性，静置5分钟备用。
+                </p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold text-xl mb-3">2. 馅料准备</h3>
+                <p class="text-gray-600">
+                  卤猪肉切成细丝（卤制时加入八角、桂皮、香叶、生抽、老抽、冰糖，小火卤1小时）；土豆丝、胡萝卜丝、绿豆芽分别炒熟（土豆丝炒至半透明，加少量盐调味）；豆腐干、海带丝焯水后切丝，酸萝卜切小丁备用。
+                </p>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="font-bold text-xl mb-3">3. 包制过程</h3>
+                <ol class="list-decimal list-inside space-y-2 text-gray-600">
+                  <li>取适量糯米团（约50g），放在手心，用另一只手的手掌按压成直径约10cm的薄皮（边缘略薄，中间稍厚，防止露馅）。</li>
+                  <li>在糯米皮中间依次铺上卤肉丝、炒土豆丝、豆腐干丝等喜欢的馅料（馅料总量不宜过多，约30-40g，否则难以包合）。</li>
+                  <li>用手指将糯米皮的边缘向上收拢，先捏合两侧，再捏合顶部和底部，形成椭圆形的团子，最后轻轻按压整形，确保没有缝隙。</li>
+                </ol>
+              </div>
+              <div class="bg-accent/10 p-4 rounded-lg">
+                <p class="text-gray-700 flex items-start gap-2">
+                  <i class="fa-solid fa-exclamation-circle text-accent mt-1"></i>
+                  <span>注意事项：糯米皮一定要趁热包制，凉了会变硬易裂；馅料尽量保持干燥，避免糯米皮吸水变软破损；包好后尽快食用，口感最佳。</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 视频嵌入模块 -->
+          <div id="video" class="bg-gray-50 rounded-xl p-8">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-video text-accent"></i>
+              现做现吃制作视频
+            </h2>
+            <div class="aspect-video rounded-xl overflow-hidden shadow-lg border-4 border-white">
+              <video 
+                src="video/嵌糕.mp4"
+                controls
+                poster="video/qiangao_cover.jpg"
+                preload="metadata"
+                class="w-full h-full object-contain"
+              >
+                您的浏览器不支持HTML5视频播放，请更新浏览器~
+              </video>
+            </div>
+            <p class="text-center text-gray-500 mt-4 text-sm">
+              本地实拍早餐摊制作过程 | 现做现吃，软糯鲜香不粘牙
+            </p>
+          </div>
+        </div>
+
+        <!-- 右侧边栏（占4列） -->
+        <div class="lg:col-span-4 space-y-8">
+          <!-- 历史渊源 -->
+          <div class="bg-gray-50 rounded-xl p-8 sticky top-32">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-scroll text-accent"></i>
+              历史渊源
+            </h2>
+            <div class="space-y-4 text-gray-600">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-history text-accent text-xl mt-1"></i>
+                <p>嵌糕的诞生，根植于台州地区悠久的稻作文化和务实精神。其前身可追溯至农耕时代，农人为节省田间用餐时间，将菜肴卷入软糯的年糕中，便于携带和食用。在临海，这一形式被发挥到极致，并形成了独特的区域风格。</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-map-pin text-accent text-xl mt-1"></i>
+                <p>在临海，嵌糕是早餐界的“顶流”，几乎每个社区都有专门的嵌糕摊，每天清晨都能看到排队买嵌糕的人群，是临海人刻在骨子里的味觉记忆。随着时代发展，嵌糕的馅料不断丰富，从最初的简单荤素搭配，到如今的十余种配料可选，但传统的糯米皮制作工艺始终保留，确保了原汁原味的口感。</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-arrow-trend-up text-accent text-xl mt-1"></i>
+                <p>与温岭等地的嵌糕相比，临海嵌糕更注重馅料的精致配伍与口感的层次平衡。它既保留了农家菜的丰盛实在，又融入了临海“十番”宴席的搭配智慧，是市井小吃登堂入室的美学体现。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 推荐店铺 -->
+          <div id="shop" class="bg-gray-50 rounded-xl p-8 sticky top-[420px]">
+            <h2 class="font-serif font-bold text-2xl md:text-3xl mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-map-marker-alt text-accent"></i>
+              寻味店铺
+            </h2>
+            <div class="space-y-6">
+
+              <!-- 店铺2 -->
+              <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                <div class="p-5">
+                  <div class="flex justify-between items-start mb-3">
+                    <h3 class="font-serif font-bold text-xl">陈记嵌糕</h3>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">人气爆款</span>
+                  </div>
+                  <div class="flex items-center mt-1 mb-3">
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-solid fa-star text-secondary text-sm"></i>
+                    <i class="fa-regular fa-star text-secondary text-sm"></i>
+                    <span class="ml-2 text-sm text-gray-500">4.2分</span>
+                  </div>
+                  <p class="text-gray-600 mb-3 text-sm">
+                    紫阳街附近的热门店铺，馅料种类多达15种，支持自定义搭配，颜值和口感双在线。
+                  </p>
+                  <div class="flex flex-col gap-2 text-sm text-gray-500">
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-map-marker-alt w-5 text-accent"></i>
+                      <span>临海市古城街道紫阳街240号</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-clock w-5 text-accent"></i>
+                      <span>8：30-21：00</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i class="fa-solid fa-money-bill-wave w-5 text-accent"></i>
+                      <span>价格：12-20元/个</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+ <!-- 底部 -->
+ <footer class="bg-dark text-white py-12">
+     <div class="container mx-auto px-4">
+         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+             <div>
+                 <div class="flex items-center gap-2 mb-6">
+                     <i class="fa-solid fa-utensils text-primary text-2xl"></i>
+                     <span class="font-serif font-bold text-xl">五味经纬·临海美食图鉴</span>
+                 </div>
+                 <p class="text-gray-400 mb-6">
+                     探索千年府城的舌尖盛宴，品味临海的山海风味与市井烟火。
+                 </p>
+                 <div class="flex gap-4">
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-weixin"></i>
+                     </a>
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-weibo"></i>
+                     </a>
+                     <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                         <i class="fa-brands fa-douyin"></i>
+                     </a>
+                 </div>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">快速导航</h4>
+                 <ul class="space-y-3">
+                     <li><a href="#intro" class="text-gray-400 hover:text-primary transition-colors">府城风味</a></li>
+                     <li><a href="#famous" class="text-gray-400 hover:text-primary transition-colors">必吃美食</a></li>
+                     <li><a href="#street" class="text-gray-400 hover:text-primary transition-colors">经典推荐</a></li>
+                     <li><a href="#restaurant" class="text-gray-400 hover:text-primary transition-colors">推荐餐馆</a></li>
+                     <li><a href="#culture" class="text-gray-400 hover:text-primary transition-colors">项目概况</a></li>
+                 </ul>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">联系我们</h4>
+                 <ul class="space-y-3">
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-map-marker-alt text-primary"></i>
+                         <span>临海市东方大道台州学院</span>
+                     </li>
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-phone text-primary"></i>
+                         <span>18857637585</span>
+                     </li>
+                     <li class="flex items-center gap-3 text-gray-400">
+                         <i class="fa-solid fa-envelope text-primary"></i>
+                         <span>3236471173@qq.com</span>
+                     </li>
+                 </ul>
+             </div>
+             <div>
+                 <h4 class="font-bold text-lg mb-6">订阅更新</h4>
+                 <p class="text-gray-400 mb-4">
+                     订阅我们的 抖音@五味经纬，获取最新的美食推荐和旅游资讯。
+                 </p>
+                 <form class="flex">
+                     <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                     <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-colors">
+                         订阅
+                     </button>
+                 </form>
+             </div>
+         </div>
+         <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+         </div>
+     </div>
+ </footer>
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-8 right-8 bg-accent text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-accent/90">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-times"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2', 'shadow');
+        header.classList.remove('py-3', 'shadow-sm');
+      } else {
+        header.classList.add('py-3', 'shadow-sm');
+        header.classList.remove('py-2', 'shadow');
+      }
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
